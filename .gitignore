@@ -1,5 +1,6 @@
 .DS_Store
 Thumbs.db
 .env
+.streamlit/secrets.toml
 node_modules/
 dist/

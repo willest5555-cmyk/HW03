@@ -30,6 +30,29 @@ python -m http.server 5173
 http://localhost:5173
 ```
 
+## Streamlit Cloud 部署
+
+本專案也提供 Streamlit 版本，入口檔是：
+
+```text
+streamlit_app.py
+```
+
+在 Streamlit Community Cloud 建立 app 時，請選擇此 GitHub repo，並將 main file path 設為 `streamlit_app.py`。
+
+部署前請在 Streamlit Cloud 的 Secrets 設定加入：
+
+```toml
+POLLINATIONS_API_KEY = "你的 Pollinations API key"
+```
+
+請不要把 `.env` 或 `.streamlit/secrets.toml` 提交到 GitHub。若要在本機測試 Streamlit 版本，可先安裝依賴：
+
+```powershell
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
 ## 功能
 
 - 輸入文字 prompt 生成圖片
