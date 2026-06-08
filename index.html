@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 圖片生成器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="AI 圖片生成器">
+        <div class="panel controls">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">AI</span>
+            <div>
+              <h1>文字轉圖片生成器</h1>
+              <p>輸入文字敘述，使用免費可用的 FLUX 圖片模型產生圖片。</p>
+            </div>
+          </div>
+
+          <form id="generatorForm">
+            <label for="prompt">圖片敘述</label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              rows="7"
+              maxlength="800"
+              placeholder="例如：一座未來感台北城市，雨後夜晚，霓虹燈倒映在街道上，電影感光影"
+              required
+            ></textarea>
+
+            <div class="grid two">
+              <div class="field">
+                <label for="model">模型</label>
+                <select id="model" name="model">
+                  <option value="flux" selected>FLUX</option>
+                  <option value="zimage">Z-Image Turbo</option>
+                  <option value="seedream">Seedream</option>
+                  <option value="gptimage">GPT Image</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="ratio">比例</label>
+                <select id="ratio" name="ratio">
+                  <option value="1024x1024" selected>1:1 正方形</option>
+                  <option value="1280x720">16:9 橫式</option>
+                  <option value="720x1280">9:16 直式</option>
+                  <option value="1024x768">4:3 橫式</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid two">
+              <div class="field">
+                <label for="seed">Seed</label>
+                <input id="seed" name="seed" type="number" min="0" placeholder="0 = 隨機" />
+              </div>
+
+              <div class="field toggle-field">
+                <label for="enhance">強化 prompt</label>
+                <input id="enhance" name="enhance" type="checkbox" />
+              </div>
+            </div>
+
+            <label for="apiKey">Pollinations API key</label>
+            <input
+              id="apiKey"
+              name="apiKey"
+              type="password"
+              autocomplete="off"
+              placeholder="貼上 pk_... 或 sk_...，只會存在你的瀏覽器"
+            />
+            <p class="hint">
+              最新 Pollinations API 文件要求 key。若沒有 key，請到
+              <a href="https://enter.pollinations.ai" target="_blank" rel="noreferrer">enter.pollinations.ai</a>
+              免費建立。
+            </p>
+
+            <div class="actions">
+              <button type="submit" id="generateBtn">生成圖片</button>
+              <button type="button" id="randomSeedBtn" class="secondary">隨機 Seed</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel preview">
+          <div class="preview-toolbar">
+            <div>
+              <h2>結果預覽</h2>
+              <p id="statusText">等待輸入敘述</p>
+            </div>
+            <a id="downloadLink" class="download hidden" href="#" download="ai-image.jpg">下載</a>
+          </div>
+
+          <div id="imageStage" class="image-stage">
+            <div id="emptyState" class="empty-state">
+              <span>輸入 prompt 後，生成結果會出現在這裡。</span>
+            </div>
+            <img id="resultImage" alt="AI 生成圖片結果" class="hidden" />
+          </div>
+
+          <div class="url-card">
+            <label for="imageUrl">圖片 URL</label>
+            <div class="copy-row">
+              <input id="imageUrl" readonly placeholder="生成後會顯示可分享 URL" />
+              <button type="button" id="copyUrlBtn" class="secondary">複製</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

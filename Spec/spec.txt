@@ -1,0 +1,12 @@
+- i want to create/update a web app that allow user 
+to input text description then generate a image, 
+so let's so let's review the cos*.tsx first 
+then implement related program so 
+that it can be pushed to github 
+then deployed to  streamlit.io,
+- 
+- 請協助我安裝/更新/推送 git
+- https://github.com/willest5555-cmyk/cosmos3-ai-image-studio
+- https://cosmos3-ai-image-studio-kay3m7gdexme3dxtabgwij.streamlit.app/
+
+請協助我找一個免費 text2image model
